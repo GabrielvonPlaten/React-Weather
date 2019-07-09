@@ -8,7 +8,7 @@ const Home: React.FC = () => {
   return (
     <div className="app">
       <img className="app__logo" src={Logo} />
-      <h1 className="title">Hello React + Typescript!</h1>
+      <h1 className="title">React Weather</h1>
       <button onClick={() => setData(count + 1)}>+</button>
       <button onClick={() => setData(count - 1)}>-</button>
       <button onClick={() => setData(0)}>Reset</button>
