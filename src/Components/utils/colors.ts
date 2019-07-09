@@ -12,6 +12,4 @@ const colors = {
   box_shadow_1: "#d3d3d3"
 };
 
-// box-shadow: 1px 2px 5px #d3d3d3
-
 export default colors;

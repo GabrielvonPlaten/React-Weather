@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import "./Navbar.sass";
+import axios from "axios";
+import "./Header.sass";
 import bgImage from "../../Styles/images/landing-bg.jpg";
 
 // Styled Components
@@ -10,7 +11,11 @@ import Input from "../utils/Input/Input";
 import PrimaryButton from "../utils/Buttons/PrimaryButton";
 const { Title1 } = Titles;
 
-const Navbar: React.FC = () => {
+const Header: React.FC = () => {
+  const [formData, setFormData] = useState<string>("");
+  const [weatherData, setWeatherData] = useState<object>();
+  const API_KEY = process.env.API_KEY;
+
   const Header = styled.header`
     background-image: url(${bgImage});
     background-position: bottom;
@@ -30,17 +35,37 @@ const Navbar: React.FC = () => {
     margin: 0 auto;
   `;
 
+  const fetchWeather = async (e: any) => {
+    e.preventDefault();
+
+    await axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${formData}&appid=${API_KEY}`
+      )
+      .then(res => setWeatherData(res.data))
+      .catch(err => console.log(err));
+
+    console.log(weatherData);
+  };
+
   return (
     <Header>
       <Title1>React Weather</Title1>
-      <Form>
+      <Form onSubmit={e => fetchWeather(e)}>
         <div>
           <div>
             <Label>Location</Label>
           </div>
           <div>
             <div>
-              <Input placeholder="Name..." />
+              <Input
+                type="text"
+                placeholder="Location"
+                name="locationName"
+                value={formData}
+                autoFocus
+                onChange={e => setFormData(e.target.value)}
+              />
             </div>
           </div>
         </div>
@@ -50,4 +75,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export default Header;
