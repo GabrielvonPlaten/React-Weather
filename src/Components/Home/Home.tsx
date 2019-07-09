@@ -5,6 +5,7 @@ import "./Home.sass";
 const Home: React.FC = () => {
   const [count, setData] = useState<number>(0);
 
+  console.log(process.env.API_KEY);
   return (
     <div className="app">
       <img className="app__logo" src={Logo} />
