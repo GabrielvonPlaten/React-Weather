@@ -4,6 +4,10 @@ import axios from "axios";
 import "./Header.sass";
 import bgImage from "../../Styles/images/landing-bg.jpg";
 
+// REDUX
+import { connect } from "react-redux";
+import { setWeather } from "../../redux/actions/weatherAction";
+
 // Styled Components
 import Titles from "../utils/Titles/Titles";
 import Label from "../utils/Label/Label";
@@ -11,9 +15,14 @@ import Input from "../utils/Input/Input";
 import PrimaryButton from "../utils/Buttons/PrimaryButton";
 const { Title1 } = Titles;
 
-const Header: React.FC = () => {
+// INTERFACE
+interface Weather {
+  setWeather: any;
+}
+
+const Header = ({ setWeather }: Weather) => {
+  console.log(setWeather);
   const [formData, setFormData] = useState<string>("");
-  const [weatherData, setWeatherData] = useState<object>();
   const API_KEY = process.env.API_KEY;
 
   const Header = styled.header`
@@ -37,15 +46,12 @@ const Header: React.FC = () => {
 
   const fetchWeather = async (e: any) => {
     e.preventDefault();
-
     await axios
       .get(
         `https://api.openweathermap.org/data/2.5/forecast?q=${formData}&appid=${API_KEY}`
       )
-      .then(res => setWeatherData(res.data))
+      .then(res => setWeather(res.data))
       .catch(err => console.log(err));
-
-    console.log(weatherData);
   };
 
   return (
@@ -75,4 +81,7 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default connect(
+  null,
+  { setWeather }
+)(Header);
