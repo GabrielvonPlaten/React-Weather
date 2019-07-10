@@ -21,7 +21,6 @@ interface Weather {
 }
 
 const Header = ({ setWeather }: Weather) => {
-  console.log(setWeather);
   const [formData, setFormData] = useState<string>("");
   const API_KEY = process.env.API_KEY;
 
