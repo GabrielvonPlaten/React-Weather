@@ -13,23 +13,30 @@ const Card = ({ weatherData }: Forecast) => {
     background: #ffffff;
     padding-bottom: 0.8rem;
     transition: all 0.5s
+    box-shadow: 0px 0px 3px 1px #d3d3d3;
     &:hover {
-      box-shadow: 0px 0px 10px 2px #d3d3d3;
+      box-shadow: 0px 0px 10px 3px #d1d1d1;
     }
   `;
 
   const WeatherIcon = styled.img`
-    display: flex;
-    margin: 0 auto;
+    float: left;
   `;
 
   const WeatherInfo = styled.div`
     text-align: center;
+    clear: both;
   `;
 
   const Temperature = styled.h3`
     color: #000046;
+    float: right;
+    font-size: 2rem;
+    font-weight: 200;
+    top: 30%;
+    right: 5%;
     margin: 0;
+    position: relative;
   `;
 
   const P = styled.p`
@@ -47,8 +54,9 @@ const Card = ({ weatherData }: Forecast) => {
           ".png"
         }
       />
+      <Temperature>{weatherData.main.temp}°C</Temperature>
+      <br />
       <WeatherInfo>
-        <Temperature>{weatherData.main.temp}°C</Temperature>
         <P>{weatherData.weather[0].main}</P>
         <P>{weatherData.dt_txt}</P>
       </WeatherInfo>
