@@ -47,7 +47,7 @@ const Header = ({ setWeather }: Weather) => {
     e.preventDefault();
     await axios
       .get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${formData}&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${formData}&appid=${API_KEY}&units=metric`
       )
       .then(res => setWeather(res.data))
       .catch(err => console.log(err));
