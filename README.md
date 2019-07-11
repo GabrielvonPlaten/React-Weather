@@ -1,7 +1,9 @@
 # React Weather
 
 Weather App created with React, Typescript & Styled-Components
+
 https://github.com/GabrielvonPlaten/ts-react-boilerplate was used as the boilerplate.
+
 Website: http://reactweatherapi.surge.sh/
 
 ## Why Typescript?
