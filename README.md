@@ -1,35 +1,6 @@
-Typescript React Boilerplate made with Babel, Webpack 4, and Typescript 3.5.2
+Weather App created with React, Typescript & Styled-Components
+https://github.com/GabrielvonPlaten/ts-react-boilerplate was used as the boilerplate.
 
-## Features
-* Typescript
-* Axios
-* React-router
-* Scss & Sass
-* Import images
+## Why Typescript?
 
-## Commands
-
-**To install**
-------
-```
-git clone https://github.com/GabrielvonPlaten/ts-react-boilerplate.git
-cd ts-react-boilerplate
-npm / yarn install
-```
-
-dev-server
-------
-```
-npm / yarn run dev-server
-```
-Local server will start at **http://localhost:8080**
-
-build
-------
-```
-npm / yarn run build
-```
-
-
-
-
+I built this website for the purpose of learning Typescript and Styled Components. I like to start small when using a new technology.
