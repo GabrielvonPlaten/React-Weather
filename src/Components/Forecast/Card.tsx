@@ -28,13 +28,12 @@ const Card = ({ weatherData }: Forecast) => {
     clear: both;
   `;
 
-  const Temperature = styled.h3`
+  const Temperature = styled.span`
+    border-spacing: 100px;
     color: #000046;
-    float: right;
     font-size: 2rem;
     font-weight: 200;
     top: 30%;
-    right: 5%;
     margin: 0;
     position: relative;
   `;
@@ -47,14 +46,16 @@ const Card = ({ weatherData }: Forecast) => {
 
   return (
     <Card>
-      <WeatherIcon
-        src={
-          "https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/" +
-          weatherData.weather[0].icon +
-          ".png"
-        }
-      />
-      <Temperature>{weatherData.main.temp}°C</Temperature>
+      <span>
+        <WeatherIcon
+          src={
+            "https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/" +
+            weatherData.weather[0].icon +
+            ".png"
+          }
+        />
+        <Temperature>{Math.floor(weatherData.main.temp)}°C</Temperature>
+      </span>
       <br />
       <WeatherInfo>
         <P>{weatherData.weather[0].main}</P>

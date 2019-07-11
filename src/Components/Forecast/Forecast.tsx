@@ -19,8 +19,12 @@ const Forecast = ({ weatherData }: WeatherProp) => {
   console.log(weatherData);
   const Forecast = styled.div`
     width: 80%
-    margin: 1.4rem auto
-  `;
+    margin: 5.4rem auto;
+
+    @media only screen and (max-width: 1650px) {
+      width: 95%;
+    }
+    `;
 
   const ForecastTilte = styled(Title2)`
     color: #000040;
@@ -32,11 +36,42 @@ const Forecast = ({ weatherData }: WeatherProp) => {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 1rem;
+
+    @media only screen and (max-width: 1650px) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @media only screen and (max-width: 1280px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media only screen and (max-width: 980px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media only screen and (max-width: 780px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media only screen and (max-width: 590px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  `;
+
+  const EmptyResultText = styled.h1`
+    color: #c7c7c7 
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+
+    @media only screen and (max-width: 650px) {
+      font-size: 2rem;
+    }
   `;
 
   return (
     <Fragment>
-      {Object.keys(weatherData).length > 0 && (
+      {Object.keys(weatherData).length > 0 ? (
         <Forecast>
           <ForecastTilte>
             {weatherData.city.name} - 5 Day / 3 Hours Forecast
@@ -47,6 +82,10 @@ const Forecast = ({ weatherData }: WeatherProp) => {
             ))}
           </GridView>
         </Forecast>
+      ) : (
+        <EmptyResultText>
+          Search for a location to know its weather.
+        </EmptyResultText>
       )}
     </Fragment>
   );

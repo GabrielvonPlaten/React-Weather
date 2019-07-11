@@ -8,6 +8,11 @@ const Input = styled.input`
   padding: 0.6rem;
   margin: 1rem 0;
   width: 95%;
+  transition: all 0.2s;
+
+  &:focus {
+    border: 1px solid rgba(13, 46, 180, 1);
+  }
 `;
 
 export default Input;

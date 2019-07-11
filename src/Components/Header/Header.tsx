@@ -28,7 +28,7 @@ const Header = ({ setWeather }: Weather) => {
     background-image: url(${bgImage});
     background-position: bottom;
     background-blend-mode: darken;
-    background-color: rgba(133, 240, 200, 0.4);
+    background: linear-gradient(247.76deg, #123762 -0.48%, #151C24 45.37%, #123762 104.88%);
     background-size: cover;
     box-shadow: 1px 3px 10px 3px #d3d3d3
     height: 200px;
@@ -65,7 +65,7 @@ const Header = ({ setWeather }: Weather) => {
             <div>
               <Input
                 type="text"
-                placeholder="Location"
+                placeholder="Search..."
                 name="locationName"
                 value={formData}
                 autoFocus
