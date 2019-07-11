@@ -1,20 +1,26 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Components/Home/Home";
-import About from "./Components/About/About";
-import Navbar from "./Components/Navbar/Navbar";
+import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
+
+// Redux
+import { Provider } from "react-redux";
+import store from "./store";
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <div>
-        <Navbar />
-        <Switch>
-          <Route exact={true} path="/" component={Home} />
-          <Route exact={true} path="/about" component={About} />
-        </Switch>
-      </div>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div>
+          <Header />
+          <Switch>
+            <Route exact={true} path="/" component={Home} />
+          </Switch>
+        </div>
+        <Footer />
+      </BrowserRouter>
+    </Provider>
   );
 };
 
