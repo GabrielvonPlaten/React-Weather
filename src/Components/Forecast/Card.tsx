@@ -42,8 +42,6 @@ const Card = ({ weatherData }: Forecast) => {
     margin: 0.4rem auto;
   `;
 
-  console.log(weatherData);
-
   return (
     <Card>
       <span>

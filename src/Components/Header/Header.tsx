@@ -22,6 +22,7 @@ interface Weather {
 
 const Header = ({ setWeather }: Weather) => {
   const [formData, setFormData] = useState<string>("");
+  const [errorMessage, setError] = useState<boolean>(false);
   const API_KEY = process.env.API_KEY;
 
   const Header = styled.header`
@@ -43,15 +44,24 @@ const Header = ({ setWeather }: Weather) => {
     margin: 0 auto;
   `;
 
+  const ErrorMessage = styled.span`
+    color: red;
+  `;
+
   const fetchWeather = async (e: any) => {
     e.preventDefault();
     await axios
       .get(
         `https://api.openweathermap.org/data/2.5/forecast?q=${formData}&appid=${API_KEY}&units=metric`
       )
-      .then(res => setWeather(res.data))
-      .catch(err => console.log(err));
+      .then(res => {
+        setWeather(res.data);
+        setError(false);
+      })
+      .catch(() => setError(true));
   };
+
+  console.log(errorMessage);
 
   return (
     <Header>
@@ -75,6 +85,9 @@ const Header = ({ setWeather }: Weather) => {
           </div>
         </div>
         <PrimaryButton>Search</PrimaryButton>
+        {errorMessage && (
+          <ErrorMessage>Location could not be found.</ErrorMessage>
+        )}
       </Form>
     </Header>
   );
