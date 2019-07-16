@@ -15,8 +15,7 @@ interface WeatherProp {
   weatherData: any;
 }
 
-const Forecast = ({ weatherData }: WeatherProp) => {
-  console.log(weatherData);
+const Forecast: React.FC<WeatherProp> = ({ weatherData }) => {
   const Forecast = styled.div`
     width: 80%
     margin: 5.4rem auto;

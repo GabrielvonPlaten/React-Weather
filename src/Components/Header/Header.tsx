@@ -20,7 +20,7 @@ interface Weather {
   setWeather: any;
 }
 
-const Header = ({ setWeather }: Weather) => {
+const Header: React.FC<Weather> = ({ setWeather }) => {
   const [formData, setFormData] = useState<string>("");
   const [errorMessage, setError] = useState<boolean>(false);
   const API_KEY = process.env.API_KEY;
@@ -60,8 +60,6 @@ const Header = ({ setWeather }: Weather) => {
       })
       .catch(() => setError(true));
   };
-
-  console.log(errorMessage);
 
   return (
     <Header>

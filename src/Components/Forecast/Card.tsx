@@ -6,7 +6,7 @@ interface Forecast {
   weatherData: any;
 }
 
-const Card = ({ weatherData }: Forecast) => {
+const Card: React.FC<Forecast> = ({ weatherData }) => {
   const Card = styled.div`
     border: 1px solid #c4c4c4;
     border-radius: 4px;
